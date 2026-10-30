@@ -1,0 +1,40 @@
+# Todo el sistema en contenedores:  mvn clean package -DskipTests && docker compose up --build
+# Dos copias de product-service para ver el balanceo de carga.
+services:
+  discovery:
+    build: ./discovery-server
+    ports:
+      - "${EUREKA_PORT:-8761}:8761"
+    healthcheck:
+      test: ["CMD-SHELL", "bash -c 'exec 3<>/dev/tcp/localhost/8761'"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  product-service:
+    build: ./product-service
+    environment:
+      EUREKA_URL: http://discovery:8761/eureka
+    depends_on:
+      discovery:
+        condition: service_healthy
+    deploy:
+      replicas: 2      # dos copias; no se publica su puerto: solo se accede a traves del gateway
+
+  order-service:
+    build: ./order-service
+    environment:
+      EUREKA_URL: http://discovery:8761/eureka
+    depends_on:
+      discovery:
+        condition: service_healthy
+
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - "${GATEWAY_PORT:-8080}:8080"      # unico puerto de negocio publicado (cambialo con GATEWAY_PORT si el 8080 esta ocupado)
+    environment:
+      EUREKA_URL: http://discovery:8761/eureka
+    depends_on:
+      discovery:
+        condition: service_healthy
