@@ -1,4 +1,4 @@
-package com.juniverse.gatewaydemo.product;
+package com.juniverse.gatewaydemo.product.repository;
 
 import java.math.BigDecimal;
 import java.util.Comparator;
@@ -8,6 +8,7 @@ import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 import org.springframework.stereotype.Component;
+import com.juniverse.gatewaydemo.product.model.Product;
 
 /** Catálogo en memoria con tres productos de ejemplo (suficiente para el ejemplo; en un servicio real sería una base de datos). */
 @Component

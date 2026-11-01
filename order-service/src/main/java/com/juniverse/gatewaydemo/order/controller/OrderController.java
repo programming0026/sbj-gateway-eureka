@@ -1,4 +1,4 @@
-package com.juniverse.gatewaydemo.order;
+package com.juniverse.gatewaydemo.order.controller;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.juniverse.gatewaydemo.order.service.OrderService;
 
 /** API de pedidos (rutas internas {@code /orders}; el gateway las publica como {@code /api/orders}). */
 @RestController

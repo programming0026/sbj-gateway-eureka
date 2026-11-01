@@ -1,4 +1,4 @@
-package com.juniverse.gatewaydemo.order;
+package com.juniverse.gatewaydemo.product.filter;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -9,7 +9,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-/** Añade la cabecera {@code X-Served-By} con el servicio y el puerto que atendió la petición (ayuda didáctica). */
+/**
+ * Añade a cada respuesta la cabecera {@code X-Served-By} con el servicio, el equipo y el puerto que la atendieron. Es solo una ayuda didáctica:
+ * con dos copias del servicio permite VER cómo el gateway reparte las peticiones.
+ */
 @Component
 public class ServedByFilter extends OncePerRequestFilter {
 

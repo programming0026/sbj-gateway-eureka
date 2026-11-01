@@ -1,4 +1,4 @@
-package com.juniverse.gatewaydemo.product;
+package com.juniverse.gatewaydemo.product.model;
 
 import java.math.BigDecimal;
 

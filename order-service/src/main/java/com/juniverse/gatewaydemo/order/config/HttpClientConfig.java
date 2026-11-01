@@ -1,4 +1,4 @@
-package com.juniverse.gatewaydemo.order;
+package com.juniverse.gatewaydemo.order.config;
 
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerInterceptor;

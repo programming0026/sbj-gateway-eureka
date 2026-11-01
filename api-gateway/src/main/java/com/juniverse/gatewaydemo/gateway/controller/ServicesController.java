@@ -1,4 +1,4 @@
-package com.juniverse.gatewaydemo.gateway.web;
+package com.juniverse.gatewaydemo.gateway.controller;
 
 import java.util.List;
 import java.util.Map;

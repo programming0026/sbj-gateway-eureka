@@ -84,13 +84,21 @@ sbj-gateway-eureka/
 ├── pom.xml                       # padre: Spring Boot 4.0.1 + Spring Cloud 2025.1.0, 4 módulos
 ├── docker-compose.yml            # todo el sistema (2 réplicas de product-service)
 ├── discovery-server/             # @EnableEurekaServer
-├── product-service/              # ProductController, ProductStore (reserva atómica de stock)
-├── order-service/                # OrderService (RestClient con balanceo hacia product-service), HttpClientConfig
+├── product-service/
+│   ├── controller/               # ProductController
+│   ├── model/                    # Product
+│   ├── repository/               # ProductStore (reserva atómica de stock)
+│   └── filter/                   # ServedByFilter
+├── order-service/
+│   ├── controller/               # OrderController
+│   ├── service/                  # OrderService (RestClient con balanceo hacia product-service)
+│   ├── config/                   # HttpClientConfig
+│   └── filter/                   # ServedByFilter
 └── api-gateway/
     ├── config/GatewayRoutes.java       # rutas lb:// con rewritePath y reintentos
     ├── config/CorsConfig, GatewayProperties
     ├── filter/                          # RequestId, Logging, RateLimit, ApiKey
-    └── web/ServicesController.java      # /gateway/services
+    └── controller/ServicesController.java   # /gateway/services
 ```
 
 ## Requisitos

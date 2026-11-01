@@ -22,6 +22,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+import com.juniverse.gatewaydemo.product.filter.ServedByFilter;
+import com.juniverse.gatewaydemo.product.repository.ProductStore;
 
 /** API de productos (sin Eureka: se prueba el servicio por sí solo). */
 @SpringBootTest(properties = {"eureka.client.enabled=false", "spring.cloud.discovery.enabled=false"})

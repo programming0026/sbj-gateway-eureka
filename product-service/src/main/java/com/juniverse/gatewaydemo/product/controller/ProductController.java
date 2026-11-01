@@ -1,4 +1,4 @@
-package com.juniverse.gatewaydemo.product;
+package com.juniverse.gatewaydemo.product.controller;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.DecimalMin;
@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
+import com.juniverse.gatewaydemo.product.model.Product;
+import com.juniverse.gatewaydemo.product.repository.ProductStore;
 
 /**
  * API de productos. NO sabe nada del gateway ni de Eureka: expone sus rutas ({@code /products}) como cualquier API. El gateway se encarga

@@ -1,4 +1,4 @@
-package com.juniverse.gatewaydemo.order;
+package com.juniverse.gatewaydemo.order.service;
 
 import java.math.BigDecimal;
 import java.time.Instant;
