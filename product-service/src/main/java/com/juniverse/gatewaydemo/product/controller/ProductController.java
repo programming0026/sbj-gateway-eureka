@@ -1,11 +1,9 @@
 package com.juniverse.gatewaydemo.product.controller;
 
+import com.juniverse.gatewaydemo.product.dto.CreateProductRequest;
+import com.juniverse.gatewaydemo.product.dto.Reservation;
+import com.juniverse.gatewaydemo.product.dto.ReserveRequest;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import java.math.BigDecimal;
 import java.net.URI;
 import java.util.List;
 import org.springframework.http.HttpStatus;
@@ -27,37 +25,6 @@ import com.juniverse.gatewaydemo.product.repository.ProductStore;
 @RestController
 @RequestMapping("/products")
 public class ProductController {
-
-    /**
-     * Datos para crear un producto.
-     *
-     * @param name nombre
-     * @param price precio
-     * @param stock existencias
-     */
-    public record CreateProductRequest(@NotBlank(message = "El nombre es obligatorio") String name,
-            @NotNull(message = "El precio es obligatorio") @DecimalMin(value = "0.01", message = "El precio debe ser mayor que cero") BigDecimal price,
-            @Min(value = 0, message = "Las existencias no pueden ser negativas") int stock) {
-    }
-
-    /**
-     * Petición de reserva de existencias.
-     *
-     * @param quantity unidades a reservar
-     */
-    public record ReserveRequest(@Min(value = 1, message = "La cantidad mínima es 1") int quantity) {
-    }
-
-    /**
-     * Reserva confirmada: lo que necesita quien hace el pedido.
-     *
-     * @param productId producto
-     * @param name nombre
-     * @param unitPrice precio unitario
-     * @param quantity unidades reservadas
-     */
-    public record Reservation(long productId, String name, BigDecimal unitPrice, int quantity) {
-    }
 
     private final ProductStore store;
 

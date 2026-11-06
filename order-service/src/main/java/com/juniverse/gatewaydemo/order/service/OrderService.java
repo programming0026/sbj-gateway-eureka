@@ -1,5 +1,6 @@
 package com.juniverse.gatewaydemo.order.service;
 
+import com.juniverse.gatewaydemo.order.dto.Reservation;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.Comparator;
@@ -34,9 +35,6 @@ public class OrderService {
      * @param reservedBy copia de product-service que atendió la reserva (para ver el balanceo de carga)
      */
     public record Order(long id, long productId, String productName, int quantity, BigDecimal total, Instant createdAt, String reservedBy) {
-    }
-
-    private record Reservation(long productId, String name, BigDecimal unitPrice, int quantity) {
     }
 
     private static final int CONNECT_ATTEMPTS = 3;

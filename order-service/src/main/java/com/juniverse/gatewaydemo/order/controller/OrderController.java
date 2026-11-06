@@ -1,7 +1,7 @@
 package com.juniverse.gatewaydemo.order.controller;
 
+import com.juniverse.gatewaydemo.order.dto.CreateOrderRequest;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.Min;
 import java.net.URI;
 import java.util.List;
 import org.springframework.http.ResponseEntity;
@@ -17,16 +17,6 @@ import com.juniverse.gatewaydemo.order.service.OrderService;
 @RestController
 @RequestMapping("/orders")
 public class OrderController {
-
-    /**
-     * Datos de un pedido.
-     *
-     * @param productId producto
-     * @param quantity unidades
-     */
-    public record CreateOrderRequest(@Min(value = 1, message = "El producto es obligatorio") long productId,
-            @Min(value = 1, message = "La cantidad mínima es 1") int quantity) {
-    }
 
     private final OrderService service;
 

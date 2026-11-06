@@ -87,11 +87,13 @@ sbj-gateway-eureka/
 ├── product-service/
 │   ├── controller/               # ProductController
 │   ├── model/                    # Product
+│   ├── dto/                      # CreateProductRequest, ReserveRequest, Reservation
 │   ├── repository/               # ProductStore (reserva atómica de stock)
 │   └── filter/                   # ServedByFilter
 ├── order-service/
 │   ├── controller/               # OrderController
 │   ├── service/                  # OrderService (RestClient con balanceo hacia product-service)
+│   ├── dto/                      # CreateOrderRequest, Reservation (respuesta de product-service)
 │   ├── config/                   # HttpClientConfig
 │   └── filter/                   # ServedByFilter
 └── api-gateway/
